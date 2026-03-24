@@ -115,27 +115,19 @@ cortex_langgraph_integration/
 
 4. **Configure environment variables**
 
-   Copy `.env.example` or create a `.env` file in the project root:
+   Copy the example file and fill in your Snowflake credentials:
 
-   ```env
-   # ── Snowflake Credentials (Required) ──────────────────────
-   SNOWFLAKE_ACCOUNT_URL=https://<account>.snowflakecomputing.com
-   SNOWFLAKE_PAT=<your-programmatic-access-token>
-
-   # ── Agent Mode ─────────────────────────────────────────────
-   SNOWFLAKE_DATABASE=SNOWFLAKE_INTELLIGENCE
-   SNOWFLAKE_SCHEMA=AGENTS
-   SNOWFLAKE_AGENT_NAME=SALES_INTELLIGENCE_AGENT
-
-   # ── Orchestrator Mode ──────────────────────────────────────
-   CORTEX_SEARCH_SERVICE=SALES_CONVERSATION_SEARCH
-   CORTEX_SEARCH_DB=SALES_INTELLIGENCE
-   CORTEX_SEARCH_SCHEMA=DATA
-   CORTEX_SEARCH_COLUMNS=CUSTOMER_NAME,DEAL_STAGE,SALES_REP,CONVERSATION_DATE,DEAL_VALUE,PRODUCT_LINE
-   CORTEX_LLM_MODEL=claude-sonnet-4-5
-   SNOWFLAKE_WAREHOUSE=SALES_INTELLIGENCE_WH
-   SEMANTIC_MODEL=@SALES_INTELLIGENCE.DATA.MODELS/sales_metrics_model.yaml
+   ```bash
+   cp .env.example .env    # macOS/Linux
+   copy .env.example .env  # Windows
    ```
+
+   Then edit `.env` with your values. At minimum you need:
+   - `SNOWFLAKE_ACCOUNT_URL` — your Snowflake account URL
+   - `SNOWFLAKE_PAT` — a Programmatic Access Token (generate from Snowsight > User menu > Security)
+   - `SNOWFLAKE_WAREHOUSE` — warehouse for SQL API calls
+
+   See [.env.example](.env.example) for all available settings.
 
 ## Usage
 
